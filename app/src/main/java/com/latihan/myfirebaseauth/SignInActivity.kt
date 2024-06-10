@@ -10,6 +10,7 @@ import androidx.core.view.WindowInsetsCompat
 import com.bumptech.glide.Glide
 import com.google.android.gms.auth.api.Auth
 import com.google.android.gms.auth.api.signin.GoogleSignIn
+import com.google.android.gms.auth.api.signin.GoogleSignIn.getClient
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
@@ -48,13 +49,8 @@ class SignInActivity : AppCompatActivity() {
         if (photoUrl!=null){
             Glide.with(this).load(photoUrl).into(binding.imgProfile)
 
-            binding.imgProfile.post {
-                if (binding.imgProfile.drawable == null) {
-                    binding.imgProfile.setImageResource(R.drawable.ic_google)
-                }
-            }
         } else {
-            binding.imgProfile.setImageResource(R.drawable.ic_google)
+            binding.imgProfile.setImageResource(R.drawable.profile_avatar)
         }
         binding.name.text = name
         binding.email.text = email
@@ -64,7 +60,7 @@ class SignInActivity : AppCompatActivity() {
             .requestEmail()
             .build()
 
-        googleSignInClient = GoogleSignIn.getClient(this, gso)
+        googleSignInClient = getClient(this, gso)
 
         binding.btnSignOut.setOnClickListener {
             auth.signOut()

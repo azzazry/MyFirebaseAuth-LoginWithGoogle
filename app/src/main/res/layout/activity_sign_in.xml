@@ -12,11 +12,10 @@ tools:context=".SignInActivity">
         android:layout_width="84dp"
         android:layout_height="84dp"
         android:layout_marginBottom="6dp"
-        android:contentDescription="profile"
+        android:scaleType="centerCrop"
         app:layout_constraintBottom_toTopOf="@+id/name"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:srcCompat="@drawable/ic_google" />
+        app:layout_constraintStart_toStartOf="parent" />
 
 
     <TextView
@@ -51,6 +50,7 @@ tools:context=".SignInActivity">
         android:paddingVertical="14dp"
         android:fontFamily="@font/lato_medium"
         android:textSize="24sp"
+        android:background="@drawable/round_btn"
         android:layout_marginHorizontal="20dp"
         android:layout_marginBottom="60dp"
         app:layout_constraintBottom_toBottomOf="parent"

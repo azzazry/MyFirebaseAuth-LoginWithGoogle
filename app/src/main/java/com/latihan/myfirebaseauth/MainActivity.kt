@@ -74,9 +74,7 @@ class MainActivity : AppCompatActivity() {
     private fun handleResults(task: Task<GoogleSignInAccount>) {
         if (task.isSuccessful){
             val account : GoogleSignInAccount? = task.result
-            if (account != null){
-                updateUI(account)
-            }
+            if (account != null) updateUI(account)
         } else{
             Toast.makeText(this, task.exception.toString() , Toast.LENGTH_SHORT).show()
         }
@@ -88,10 +86,12 @@ class MainActivity : AppCompatActivity() {
             if (it.isSuccessful){
 
                 val photoUrl: Uri? = account.photoUrl
+
                 val intent = Intent(this , SignInActivity::class.java)
                 intent.putExtra("img_profile", photoUrl)
                 intent.putExtra("email" , account.email)
                 intent.putExtra("name" , account.displayName)
+
                 startActivity(intent)
             }else{
                 Toast.makeText(this, it.exception.toString() , Toast.LENGTH_SHORT).show()
